@@ -1,0 +1,8 @@
+.movie_overview {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    margin-top: 10px;
+}
