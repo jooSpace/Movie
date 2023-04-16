@@ -6,3 +6,10 @@
     -webkit-line-clamp: 7;
     margin-top: 10px;
 }
+
+.medal {
+    position: absolute;
+    margin-top: -56px;
+    margin-left: -50px;
+    width: 100px;
+}
