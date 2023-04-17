@@ -2,14 +2,14 @@ import { configureStore, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { REACT_APP_TMDB_KEY } from '../config/key';
 
-// const KEY = "17c39faa5663bf0bcf945d1de0d13501"
-const URL = "https://api.themoviedb.org/3/movie/"
+const URL = "https://api.themoviedb.org/3"
 
-export const getMovie = createAsyncThunk('GET/getMovie', 
+export const getPopularMovie = createAsyncThunk('GET/getPopularMovie', 
     async () => {
         try {
-            const response = await axios.get(`${URL}popular?api_key=${REACT_APP_TMDB_KEY}&language=ko-KR`)
+            const response = await axios.get(`${URL}/trending/movie/day?api_key=${REACT_APP_TMDB_KEY}&language=ko-KR`)
             const movie = await response;
+            console.log(movie);
             return movie.data.results;
             
         }   
@@ -27,14 +27,14 @@ export const movieSlice = createSlice({
         error : null
     },
     extraReducers: (builder) => {
-        builder.addCase(getMovie.pending, (state) => {
+        builder.addCase(getPopularMovie.pending, (state) => {
             state.isLoading = true;
         })
-        builder.addCase(getMovie.fulfilled, (state, action) => {
+        builder.addCase(getPopularMovie.fulfilled, (state, action) => {
             state.isLoading = false;
             state.movie = action.payload;
         })
-        builder.addCase(getMovie.rejected, (state, action) => {
+        builder.addCase(getPopularMovie.rejected, (state, action) => {
             state.status = 'fail';
             state.error = action.error;
         })

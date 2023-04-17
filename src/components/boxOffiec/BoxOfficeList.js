@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMovie } from '../../store/store';
+import { getPopularMovie } from '../../store/store';
 import styles from '../../css/main.module.css';
 import StarRatings from 'react-star-ratings';
 import medal_1 from '../../resource/madal_1.png';
@@ -13,7 +13,7 @@ const BoxOfficeList = () => {
     const { movie, isLoading, error } = useSelector((state) => state.movie);
 
     useEffect(() => {
-        dispatch(getMovie());
+        dispatch(getPopularMovie());
     }, [dispatch],);
 
     if(isLoading) {
@@ -30,11 +30,10 @@ const BoxOfficeList = () => {
                 movie.map((movie, index) => {
                 if (index === 0) {
                     return (
-                    <div key={index} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                    <div key={movie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                         <img className={styles.medal} src={medal_1} alt='medal'></img>
                         <img className='' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
                         <h2 className='text-center mt-5 font-bold text-lg'>{movie.title}</h2>
-                        <p className='mt-5'>개봉일 : {movie.release_date}</p>
                         <div className='flex'>
                             <p className='mr-3'>평점 : {movie.vote_average} / 10 </p>
                         </div>
@@ -53,11 +52,10 @@ const BoxOfficeList = () => {
                     );
                 } else if (index === 1) {
                     return (
-                        <div key={index} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={movie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                             <img className={styles.medal} src={medal_2} alt='medal'></img>
                             <img className='' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{movie.title}</h2>
-                            <p className='mt-5'>개봉일 : {movie.release_date}</p>
                             <div className='flex'>
                                 <p className='mr-3'>평점 : {movie.vote_average} / 10 </p>
                             </div>
@@ -76,11 +74,10 @@ const BoxOfficeList = () => {
                         );
                 } else if (index === 2) {
                     return (
-                        <div key={index} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={movie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                             <img className={styles.medal} src={medal_3} alt='medal'></img>
                             <img className='' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{movie.title}</h2>
-                            <p className='mt-5'>개봉일 : {movie.release_date}</p>
                             <div className='flex'>
                                 <p className='mr-3'>평점 : {movie.vote_average} / 10 </p>
                             </div>
@@ -99,10 +96,9 @@ const BoxOfficeList = () => {
                         );
                 } else {
                     return (
-                        <div key={index} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={movie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                             <img className='' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{movie.title}</h2>
-                            <p className='mt-5'>개봉일 : {movie.release_date}</p>
                             <div className='flex'>
                                 <p className='mr-3'>평점 : {movie.vote_average} / 10 </p>
                             </div>

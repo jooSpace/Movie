@@ -1,0 +1,14 @@
+.neon_date {
+    font-size: 2em;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
+    text-align: center;
+}
+
+.neon_time {
+    font-size: 2em;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #3936e7, 0 0 30px #3936e7, 0 0 40px #3936e7, 0 0 55px #3936e7, 0 0 75px #3936e7;
+    text-align: center;
+    margin-bottom: 2em;
+}
