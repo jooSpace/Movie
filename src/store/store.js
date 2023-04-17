@@ -19,17 +19,20 @@ export const getTrendingDayMovie = createAsyncThunk('GET/getTrendingDayMovie',
     }
 )
 
-// export const getTrendingWeekMoive = createAsyncThunk('GET/getTrendingWeekMovie',
-//     async () => {
-//         try {
-//             const response = await axios.get(`${URL}/trending/movie/week?api_key=${REACT_APP_TMDB_KEY}&language=ko-KR`)
-//             const movie = await response;
-//             console.log("week",movie);
-//             return movie.data.results;
-//         }
-//     }
+export const getTrendingWeekMoive = createAsyncThunk('GET/getTrendingWeekMovie',
+    async () => {
+        try {
+            const response = await axios.get(`${URL}/trending/movie/week?api_key=${REACT_APP_TMDB_KEY}&language=ko-KR`)
+            const movie = await response;
+            console.log("week",movie);
+            return movie.data.results;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
 
-// )
+)
 
 export const dayMovieSlice = createSlice({
     name : 'dayMovieSlice',
@@ -53,8 +56,31 @@ export const dayMovieSlice = createSlice({
     }
 })
 
+export const weekMovieSlice = createSlice({
+    name : 'weekMovieSlice',
+    initialState : {
+        weekMovie : [],
+        isLoading : false,
+        error : null
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getTrendingWeekMoive.pending, (state) => {
+            state.isLoading = true;
+        })
+        builder.addCase(getTrendingWeekMoive.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.weekMovie = action.payload;
+        })
+        builder.addCase(getTrendingWeekMoive.rejected, (state, action) => {
+            state.status = 'fail';
+            state.error = action.error;
+        })
+    }
+})
+
 export default configureStore({
     reducer: {
-        dayMovie : dayMovieSlice.reducer 
+        dayMovie : dayMovieSlice.reducer,
+        weekMovie : weekMovieSlice.reducer
     }
 })

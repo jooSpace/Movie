@@ -5,28 +5,39 @@ import BoxOfficeBaner from './../components/boxOffiec/BoxOfficeBaner';
 
 const Main = () => {
 
-    const [currentTab, clickTab] = useState(0);
+    const [Tab, setTab] = useState(0);
     const menuArr = [
         {name: 'Day', content:<BoxOfficeDayList/>, },
         {name: 'Week', content:<BoxOfficeWeekList/>}
     ]
 
     const selectMenuHandler = (index) => {
-        clickTab(index);
+        setTab(index);
     }
 
     return(
         <div>
             <BoxOfficeBaner/>
-            <div>
+            <div className='container mx-auto flex font-bold items-center justify-center list-none'>
                 {menuArr.map((el,index) => (
-                    <li key={index} className={index === currentTab ? "submenu focused" : "submenu" }
-                        onClick={() => selectMenuHandler(index)}>{el.name}
+                    <li key={index} onClick={() => selectMenuHandler(index)}>
+                        <ul className="flex flex-wrap -mb-px text-sm font-medium text-center">
+                            <li>
+                                <button className={index === Tab 
+                                    ? "inline-block p-4 border-b-2 border-blue-600 rounded-t-lg"  
+                                    : "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300" }>
+                                    <p className={index === Tab
+                                    ? "text-blue-500"
+                                    : ""
+                                    }>{el.name}</p>
+                                </button>
+                            </li>
+                        </ul>
                     </li>
                 ))}
             </div>
                 <div>
-                    <div>{menuArr[currentTab].content}</div>
+                    <div>{menuArr[Tab].content}</div>
                 </div>
             {/* <BoxOfficeDayList/> */}
         </div>
