@@ -24,7 +24,7 @@ export const getTrendingWeekMoive = createAsyncThunk('GET/getTrendingWeekMovie',
         try {
             const response = await axios.get(`${URL}/trending/movie/week?api_key=${REACT_APP_TMDB_KEY}&language=ko-KR`)
             const movie = await response;
-            console.log("week",movie);
+            // console.log("week",movie);
             return movie.data.results;
         }
         catch (error) {

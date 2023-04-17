@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTrendingDayMovie } from '../../store/store';
+import Loading from '../common/Loading';
 import styles from '../../css/main.module.css';
 import StarRatings from 'react-star-ratings';
 import medal_1 from '../../resource/madal_1.png';
@@ -17,7 +18,7 @@ const BoxOfficeList = () => {
     }, [dispatch],);
 
     if(isLoading) {
-        return <div>로딩중...</div>
+            return <Loading/>
     }
 
     if(error) { 
