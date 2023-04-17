@@ -16,25 +16,14 @@ const BoxOfficeBaner = () => {
         }
     }, []);
 
-
-    // let today = new Date(); 
-    // let time = {
-    //   year: today.getFullYear(),
-    //   month: today.getMonth() + 1, 
-    //   date: today.getDate(),
-    //   hours: today.getHours(), 
-    //   minutes: today.getMinutes(), 
-    // }
-
-    // let timestring = `${time.year}-${time.month}-${time.date} ${time.hours}:${time.minutes}`;
-
     return (
-        <div className='container mx-auto flex justify-center'>
+        <div className='container mx-auto justify-center items-center flex flex-col mb-5' style={{backgroundColor:'#f5f5dc'}}>
             <div className='lg:w-1/4 md:w-1/2 w-3/6 justify-center'>
                 <MainLottieFiles/>
                 <p className={styles.neon_date}>today : {time.format('YYYY-MM-DD')}</p>
                 <p className={styles.neon_time}>{time.format('HH-mm-ss')}</p>
             </div>
+
         </div>
     );
 };
