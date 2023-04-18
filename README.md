@@ -2,12 +2,12 @@
 
 # Use Modules
 
-react
-react-toolkit
-axios
-moment
-react-dom
-react-loader-spinner
-react-lottie-player
-react-redux
-react-star-ratings
+react \
+react-toolkit \
+axios \
+moment \
+react-dom \
+react-loader-spinner \
+react-lottie-player \
+react-redux \
+react-star-ratings \
