@@ -4,12 +4,12 @@ const Footer = () => {
     return (
         <footer className="text-gray-600 body-font bg-neutral-300">
             <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-                <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                <p className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
                     {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10 text-white p-2 bg-blue-500 rounded-full" viewBox="0 0 24 24">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                     </svg> */}
                     <span className="ml-3 text-xl">Movies</span>
-                </a>
+                </p>
                 <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-500 sm:py-2 sm:mt-0 mt-4 flex">© 2020 JooSpace —
                     <a href="https://github.com/jooSpace/Movie" className="text-gray-600 ml-1 flex" rel="noopener noreferrer" target="_blank">
                         <svg aria-hidden="true" className="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24">
