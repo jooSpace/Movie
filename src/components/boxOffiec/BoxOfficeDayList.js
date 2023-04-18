@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTrendingDayMovie } from '../../store/store';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../common/Loading';
 import styles from '../../css/main.module.css';
 import StarRatings from 'react-star-ratings';
@@ -11,11 +12,18 @@ import medal_3 from '../../resource/madal_3.png';
 const BoxOfficeList = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const { dayMovie, isLoading, error } = useSelector((state) => state.dayMovie);
 
     useEffect(() => {
         dispatch(getTrendingDayMovie());
-    }, [dispatch],);
+    }, [dispatch]);
+
+    const handleMovieClick = (id) => {
+        navigate(`/movieDetail/${id}`);
+        // dispatch(getMovieDetail(id));
+    }
 
     if(isLoading) {
             return <Loading/>
@@ -31,7 +39,7 @@ const BoxOfficeList = () => {
                 dayMovie.map((dayMovie, index) => {
                 if (index === 0) {
                     return (
-                    <div key={dayMovie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                    <div key={dayMovie.id} onClick={() => handleMovieClick(dayMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                         <img className={styles.medal} src={medal_1} alt='medal'></img>
                         <img className='' src={`https://image.tmdb.org/t/p/w300${dayMovie.poster_path}`} alt={dayMovie.title} />
                         <h2 className='text-center mt-5 font-bold text-lg'>{dayMovie.title}</h2>
@@ -52,7 +60,7 @@ const BoxOfficeList = () => {
                     );
                 } else if (index === 1) {
                     return (
-                        <div key={dayMovie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={dayMovie.id} onClick={() => handleMovieClick(dayMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                             <img className={styles.medal} src={medal_2} alt='medal'></img>
                             <img className='' src={`https://image.tmdb.org/t/p/w300${dayMovie.poster_path}`} alt={dayMovie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{dayMovie.title}</h2>
@@ -73,7 +81,7 @@ const BoxOfficeList = () => {
                         );
                 } else if (index === 2) {
                     return (
-                        <div key={dayMovie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={dayMovie.id} onClick={() => handleMovieClick(dayMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                             <img className={styles.medal} src={medal_3} alt='medal'></img>
                             <img className='' src={`https://image.tmdb.org/t/p/w300${dayMovie.poster_path}`} alt={dayMovie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{dayMovie.title}</h2>
@@ -94,7 +102,7 @@ const BoxOfficeList = () => {
                         );
                 } else {
                     return (
-                        <div key={dayMovie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={dayMovie.id} onClick={() => handleMovieClick(dayMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                             <img className='' src={`https://image.tmdb.org/t/p/w300${dayMovie.poster_path}`} alt={dayMovie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{dayMovie.title}</h2>
                             <div className='flex'>

@@ -10,4 +10,4 @@ react-dom \
 react-loader-spinner \
 react-lottie-player \
 react-redux \
-react-star-ratings \
+react-star-ratings 
