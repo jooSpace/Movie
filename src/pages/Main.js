@@ -24,8 +24,8 @@ const Main = () => {
                         <ul className="flex flex-wrap -mb-px text-sm font-medium text-center">
                             <li>
                                 <button className={index === Tab 
-                                    ? "inline-block p-4 border-b-2 border-blue-600 rounded-t-lg"  
-                                    : "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300" }>
+                                    ? "inline-block p-4 border-b-2 border-blue-600 rounded-t-lg text-2xl"  
+                                    : "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 text-2xl" }>
                                     <p className={index === Tab
                                     ? "text-blue-500"
                                     : ""

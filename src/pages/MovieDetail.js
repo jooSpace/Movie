@@ -33,7 +33,7 @@ const MovieDetail = () => {
     return (
         <div className='container mx-auto'>
             <MovieDetailCard movieDetail={movieDetail} credits={credits}/>
-            <MovieDetailCredits/>
+            <MovieDetailCredits credits={credits}/>
         </div>
     );
 }

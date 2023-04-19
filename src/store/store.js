@@ -39,7 +39,7 @@ export const getMovieDetail = createAsyncThunk('GET/getMovieDetail',
         try {
             const response = await axios.get(`${URL}/movie/${movieId}?api_key=${REACT_APP_TMDB_KEY}&language=${language}`)
             const movieDetail = await response;
-            console.log("movieDetail", movieDetail.data);
+            // console.log("movieDetail", movieDetail.data);
             // console.log("movieId", movieId);
             return movieDetail.data;
         }
@@ -54,7 +54,7 @@ export const getCredits = createAsyncThunk('GET/getCredits',
         try {
             const response = await axios.get(`${URL}/movie/${movieId}/credits?api_key=${REACT_APP_TMDB_KEY}`)
             const credits = await response;
-            console.log("credits", credits.data);
+            // console.log("credits", credits.data);
             return credits.data
         }
         catch (error) {

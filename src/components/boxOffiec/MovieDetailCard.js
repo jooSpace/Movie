@@ -25,7 +25,7 @@ const MovieDetailCard = ({movieDetail, credits}) => {
                         <img src={postImage} alt='post'></img>
                     </div>
                     <div className='flex flex-wrap align-center pl-10 w-2/3'>
-                        <div className='w-full h-10 pt-10'>
+                        <div className='w-full h-10 pt-5'>
                             <h1 className='font-bold text-4xl'>{title}</h1>     
                             <div className='w-full flex mt-2'>
                                 <p>{release_date}</p>
@@ -42,12 +42,12 @@ const MovieDetailCard = ({movieDetail, credits}) => {
                                 </ul>
                                 <p>{runtime}분</p>
                             </div> 
-                            <div className='w-full flex-wrap mt-8'>
+                            <div className='w-full flex-wrap mt-5'>
                                 <h3 className='italic text-lg opacity-70'>{tagline}</h3>
                                 <p className='my-2 font-bold text-xl'>개요</p>                       
-                                <p>{overview}</p>
+                                <p className='text-sm'>{overview}</p>
                             </div>
-                            <div className='w-full flex-wrap mt-8'>
+                            <div className='w-full flex-wrap mt-5'>
                                 <div>{creditsResult &&
                                         <div className='flex flex-wrap'>
                                         {

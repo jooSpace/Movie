@@ -38,7 +38,7 @@ const BoxOfficeWeekList = () => {
                 weekMovie.map((weekMovie, index) => {
                 if (index === 0) {
                     return (
-                    <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                    <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 cursor-pointer">
                         <img className={styles.medal} src={medal_1} alt='medal'></img>
                         <img className='' src={`https://image.tmdb.org/t/p/w300${weekMovie.poster_path}`} alt={weekMovie.title} />
                         <h2 className='text-center mt-5 font-bold text-lg'>{weekMovie.title}</h2>
@@ -59,7 +59,7 @@ const BoxOfficeWeekList = () => {
                     );
                 } else if (index === 1) {
                     return (
-                        <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 cursor-pointer">
                             <img className={styles.medal} src={medal_2} alt='medal'></img>
                             <img className='' src={`https://image.tmdb.org/t/p/w300${weekMovie.poster_path}`} alt={weekMovie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{weekMovie.title}</h2>
@@ -80,7 +80,7 @@ const BoxOfficeWeekList = () => {
                         );
                 } else if (index === 2) {
                     return (
-                        <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 cursor-pointer">
                             <img className={styles.medal} src={medal_3} alt='medal'></img>
                             <img className='' src={`https://image.tmdb.org/t/p/w300${weekMovie.poster_path}`} alt={weekMovie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{weekMovie.title}</h2>
@@ -101,7 +101,7 @@ const BoxOfficeWeekList = () => {
                         );
                 } else {
                     return (
-                        <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 cursor-pointer">
                             <img className='' src={`https://image.tmdb.org/t/p/w300${weekMovie.poster_path}`} alt={weekMovie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{weekMovie.title}</h2>
                             <div className='flex'>
