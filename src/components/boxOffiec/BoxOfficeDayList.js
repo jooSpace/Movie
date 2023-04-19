@@ -22,7 +22,6 @@ const BoxOfficeList = () => {
 
     const handleMovieClick = (id) => {
         navigate(`/movieDetail/${id}`);
-        // dispatch(getMovieDetail(id));
     }
 
     if(isLoading) {

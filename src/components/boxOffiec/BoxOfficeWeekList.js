@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTrendingWeekMoive } from '../../store/store';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../common/Loading';
 import styles from '../../css/main.module.css';
 import StarRatings from 'react-star-ratings';
@@ -8,14 +9,20 @@ import medal_1 from '../../resource/madal_1.png';
 import medal_2 from '../../resource/madal_2.png';
 import medal_3 from '../../resource/madal_3.png';
 
+
 const BoxOfficeWeekList = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { weekMovie, isLoading, error } = useSelector((state) => state.weekMovie);
 
     useEffect(() => {
         dispatch(getTrendingWeekMoive());
     }, [dispatch],);
+
+    const handleMovieClick = (id) => {
+        navigate(`/movieDetail/${id}`);
+    }
 
     if(isLoading) {
         return <div><Loading/></div>
@@ -31,7 +38,7 @@ const BoxOfficeWeekList = () => {
                 weekMovie.map((weekMovie, index) => {
                 if (index === 0) {
                     return (
-                    <div key={weekMovie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                    <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                         <img className={styles.medal} src={medal_1} alt='medal'></img>
                         <img className='' src={`https://image.tmdb.org/t/p/w300${weekMovie.poster_path}`} alt={weekMovie.title} />
                         <h2 className='text-center mt-5 font-bold text-lg'>{weekMovie.title}</h2>
@@ -52,7 +59,7 @@ const BoxOfficeWeekList = () => {
                     );
                 } else if (index === 1) {
                     return (
-                        <div key={weekMovie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                             <img className={styles.medal} src={medal_2} alt='medal'></img>
                             <img className='' src={`https://image.tmdb.org/t/p/w300${weekMovie.poster_path}`} alt={weekMovie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{weekMovie.title}</h2>
@@ -73,7 +80,7 @@ const BoxOfficeWeekList = () => {
                         );
                 } else if (index === 2) {
                     return (
-                        <div key={weekMovie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                             <img className={styles.medal} src={medal_3} alt='medal'></img>
                             <img className='' src={`https://image.tmdb.org/t/p/w300${weekMovie.poster_path}`} alt={weekMovie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{weekMovie.title}</h2>
@@ -94,7 +101,7 @@ const BoxOfficeWeekList = () => {
                         );
                 } else {
                     return (
-                        <div key={weekMovie.id} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
+                        <div key={weekMovie.id} onClick={() => handleMovieClick(weekMovie.id)} className="border-4 border-f0f5f9-600 shadow-xl p-8 my-5 ">
                             <img className='' src={`https://image.tmdb.org/t/p/w300${weekMovie.poster_path}`} alt={weekMovie.title} />
                             <h2 className='text-center mt-5 font-bold text-lg'>{weekMovie.title}</h2>
                             <div className='flex'>

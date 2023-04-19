@@ -49,6 +49,20 @@ export const getMovieDetail = createAsyncThunk('GET/getMovieDetail',
     }
 )
 
+export const getCredits = createAsyncThunk('GET/getCredits', 
+    async (movieId) => {
+        try {
+            const response = await axios.get(`${URL}/movie/${movieId}/credits?api_key=${REACT_APP_TMDB_KEY}`)
+            const credits = await response;
+            console.log("credits", credits.data);
+            return credits.data
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+)
+
 export const dayMovieSlice = createSlice({
     name : 'dayMovieSlice',
     initialState : {
@@ -115,10 +129,33 @@ export const movieDetailSlice = createSlice({
     }
 })
 
+export const creditsSlice = createSlice({
+    name : 'creditsSlice',
+    initialState: {
+        credits : {},
+        isLoading : false,
+        error : null
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getCredits.pending, (state) => {
+            state.isLoading = true;
+        })
+        builder.addCase(getCredits.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.credits = action.payload;
+        })
+        builder.addCase(getCredits.rejected, (state, action) => {
+            state.status = 'fail';
+            state.error = action.error;
+        })
+    }
+})
+
 export default configureStore({
     reducer: {
         dayMovie : dayMovieSlice.reducer,
         weekMovie : weekMovieSlice.reducer,
-        movieDetail : movieDetailSlice.reducer
+        movieDetail : movieDetailSlice.reducer,
+        credits : creditsSlice.reducer
     }
 })
