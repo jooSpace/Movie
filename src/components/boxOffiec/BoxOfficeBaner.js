@@ -20,7 +20,7 @@ const BoxOfficeBaner = () => {
         <div className='container mx-auto justify-center items-center flex flex-col mb-5' style={{backgroundColor:'#f5f5dc'}}>
             <div className='lg:w-1/4 md:w-1/2 w-3/6 justify-center'>
                 <MainLottieFiles/>
-                <p className={styles.neon_date}>today : {time.format('YYYY-MM-DD')}</p>
+                <p className={styles.neon_date}>{time.format('YYYY-MM-DD')}</p>
                 <p className={styles.neon_time}>{time.format('HH-mm-ss')}</p>
             </div>
 
