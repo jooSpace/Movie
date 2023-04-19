@@ -17,7 +17,7 @@ const BoxOffice = () => {
 
     return(
         <div>
-            {/* <BoxOfficeBaner/> */}
+            <BoxOfficeBaner/>
             <div className='container mx-auto flex font-bold items-center justify-center list-none mb-10'>
                 {menuArr.map((el,index) => (
                     <li key={index} onClick={() => selectMenuHandler(index)}>

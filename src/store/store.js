@@ -66,13 +66,28 @@ export const getMovieDetail = createAsyncThunk('GET/getMovieDetail',
 export const getCredits = createAsyncThunk('GET/getCredits', 
     async (movieId) => {
         try {
-            const response = await axios.get(`${URL}/movie/${movieId}/credits?api_key=${REACT_APP_TMDB_KEY}`)
+            const response = await axios.get(`${URL}/movie/${movieId}/credits?api_key=${REACT_APP_TMDB_KEY}&language=${language}`)
             const credits = await response;
             // console.log("credits", credits.data);
             return credits.data
         }
         catch (error) {
             console.log(error);
+        }
+    }
+)
+
+export const getSearchMovies = createAsyncThunk('GET/getSearchMovies', 
+    async (query, {rejectWithValue}) => {
+        try {
+            const response = await axios.get(`${URL}/search/movie?api_key=${REACT_APP_TMDB_KEY}&query=${query}`)
+            const searchMovies = await response;
+            console.log("searchMovies", searchMovies);
+            console.log("query",query);
+            return searchMovies.data.results
+        }
+        catch (error) {
+            return rejectWithValue(error.response.data);
         }
     }
 )
@@ -93,7 +108,7 @@ export const nowPlayingMovieSlice = createSlice({
             state.nowPlayingMovie = action.payload;
         })
         builder.addCase(getNowPlayingMovie.rejected, (state, action) => {
-            state.status = 'fail';
+            state.isLoading = false;
             state.error = action.error;
         })
     }
@@ -115,7 +130,7 @@ export const dayMovieSlice = createSlice({
             state.dayMovie = action.payload;
         })
         builder.addCase(getTrendingDayMovie.rejected, (state, action) => {
-            state.status = 'fail';
+            state.isLoading = false;
             state.error = action.error;
         })
     }
@@ -137,7 +152,7 @@ export const weekMovieSlice = createSlice({
             state.weekMovie = action.payload;
         })
         builder.addCase(getTrendingWeekMoive.rejected, (state, action) => {
-            state.status = 'fail';
+            state.isLoading = false;
             state.error = action.error;
         })
     }
@@ -159,7 +174,7 @@ export const movieDetailSlice = createSlice({
             state.movieDetail = action.payload;
         })
         builder.addCase(getMovieDetail.rejected, (state, action) => {
-            state.status = 'fail';
+            state.isLoading = false;
             state.error = action.error;
         })
     }
@@ -181,7 +196,29 @@ export const creditsSlice = createSlice({
             state.credits = action.payload;
         })
         builder.addCase(getCredits.rejected, (state, action) => {
-            state.status = 'fail';
+            state.isLoading = false;
+            state.error = action.error;
+        })
+    }
+})
+
+export const searchMoviesSlice = createSlice({
+    name : 'searchMoviesSlice',
+    initialState : {
+        searchMovies : [],
+        isLoading : false,
+        error : null
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getSearchMovies.pending, (state) => {
+            state.isLoading = true;
+        })
+        builder.addCase(getSearchMovies.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.searchMovies = action.payload;
+        })
+        builder.addCase(getSearchMovies.rejected, (state, action) => {
+            state.isLoading = false;
             state.error = action.error;
         })
     }
@@ -193,6 +230,7 @@ export default configureStore({
         dayMovie : dayMovieSlice.reducer,
         weekMovie : weekMovieSlice.reducer,
         movieDetail : movieDetailSlice.reducer,
-        credits : creditsSlice.reducer
+        credits : creditsSlice.reducer,
+        searchMovies : searchMoviesSlice.reducer
     }
 })
