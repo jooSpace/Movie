@@ -5,6 +5,20 @@ import { REACT_APP_TMDB_KEY } from '../config/key';
 const URL = "https://api.themoviedb.org/3"
 const language = "ko-KR";
 
+export const getNowPlayingMovie = createAsyncThunk('GET/getNowPlayingMovie',
+    async () => {
+        try {
+            const response = await axios.get(`${URL}/movie/now_playing?api_key=${REACT_APP_TMDB_KEY}&language=${language}`)
+            const nowPlayingMovie = await response;
+            // console.log("nowPlayingMovie", nowPlayingMovie);
+            return nowPlayingMovie.data.results;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+)
+
 export const getTrendingDayMovie = createAsyncThunk('GET/getTrendingDayMovie', 
     async () => {
         try {
@@ -62,6 +76,28 @@ export const getCredits = createAsyncThunk('GET/getCredits',
         }
     }
 )
+
+export const nowPlayingMovieSlice = createSlice({
+    name : 'nowPlayingMovieSlice',
+    initialState : {
+        nowPlayingMovie : [],
+        isLoading : false,
+        error : null
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getNowPlayingMovie.pending, (state) => {
+            state.isLoading = true;
+        })
+        builder.addCase(getNowPlayingMovie.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.nowPlayingMovie = action.payload;
+        })
+        builder.addCase(getNowPlayingMovie.rejected, (state, action) => {
+            state.status = 'fail';
+            state.error = action.error;
+        })
+    }
+})
 
 export const dayMovieSlice = createSlice({
     name : 'dayMovieSlice',
@@ -153,6 +189,7 @@ export const creditsSlice = createSlice({
 
 export default configureStore({
     reducer: {
+        nowPlayingMovie : nowPlayingMovieSlice.reducer,
         dayMovie : dayMovieSlice.reducer,
         weekMovie : weekMovieSlice.reducer,
         movieDetail : movieDetailSlice.reducer,
