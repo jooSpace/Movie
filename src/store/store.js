@@ -80,10 +80,10 @@ export const getCredits = createAsyncThunk('GET/getCredits',
 export const getSearchMovies = createAsyncThunk('GET/getSearchMovies', 
     async (query, {rejectWithValue}) => {
         try {
-            const response = await axios.get(`${URL}/search/movie?api_key=${REACT_APP_TMDB_KEY}&query=${query}`)
+            const response = await axios.get(`${URL}/search/movie?api_key=${REACT_APP_TMDB_KEY}&query=${query}&language=${language}`)
             const searchMovies = await response;
-            console.log("searchMovies", searchMovies);
-            console.log("query",query);
+            // console.log("searchMovies", searchMovies);
+            // console.log("query",query);
             return searchMovies.data.results
         }
         catch (error) {

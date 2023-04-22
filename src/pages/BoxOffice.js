@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import BoxOfficeDayList from '../components/boxOffiec/BoxOfficeDayList';
 import BoxOfficeWeekList from '../components/boxOffiec/BoxOfficeWeekList';
-import BoxOfficeBaner from '../components/boxOffiec/BoxOfficeBaner';
 
 const BoxOffice = () => {
 
@@ -17,7 +16,6 @@ const BoxOffice = () => {
 
     return(
         <div>
-            <BoxOfficeBaner/>
             <div className='container mx-auto flex font-bold items-center justify-center list-none mb-10'>
                 {menuArr.map((el,index) => (
                     <li key={index} onClick={() => selectMenuHandler(index)}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import NowPlayingMovie from '../components/nowPlayingMovie/nowPlayingMovie';
 
-const Main = () => {
+const PlayingMovie = () => {
 
     return (
         <div>
@@ -10,4 +10,4 @@ const Main = () => {
     );
 }
 
-export default Main;
+export default PlayingMovie;
