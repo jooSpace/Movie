@@ -24,8 +24,9 @@ const BoxOfficeList = () => {
         navigate(`/movieDetail/${id}`);
     }
 
+
     if(isLoading) {
-            return <Loading/>
+        return <Loading/>
     }
 
     if(error) { 
